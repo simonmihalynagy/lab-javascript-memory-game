@@ -7,37 +7,22 @@ class MemoryGame {
     this.pairsGuessed = 0;
   }
 
-  shuffleCards(cards) {
+  shuffleCards() {
     // ... write your code here
-    if (!cards) {
+
+    if (!this.cards.length) {
       return undefined;
     }
 
-    /* let oldElement;
-    for (let i = cards.length - 1; i > 0; i--) {
-      let rand = Math.floor(Math.random() * (i + 1));
-      oldElement = cards[i];
-      cards[i] = cards[rand];
-      cards[rand] = oldElement;
+    // Esto lo he intentado adaptar de stackoverflow pero no lo acabo de entender
+    else {
+      for (let i = this.cards.length; i > 0; i--) {
+        let j = Math.floor(Math.random() * i--);
+        let temp = this.cards[i];
+        this.cards[i] = this.cards[j];
+        this.cards[j] = temp;
+      }
     }
-    return cards; */
-    let currentIndex = cards.length,
-      randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-
-      // And swap it with the current element.
-      cards[([currentIndex], cards[randomIndex])] = [
-        cards[randomIndex],
-        cards[currentIndex]
-      ];
-    }
-
-    return cards;
   }
 
   checkIfPair(card1, card2) {
